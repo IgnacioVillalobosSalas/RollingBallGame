@@ -21,12 +21,16 @@ public class PlayerController : MonoBehaviour {
     }
     //FixedUpdate is called before performing any physics calculations
     void FixedUpdate() {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
 
-        movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        /*From keyboard
+        movement = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+        */
 
-        rb.AddForce(movement * Speed);
+        /*From accelerometer*/
+        rb.AddForce(new Vector3(Input.acceleration.x,Input.acceleration.z,Input.acceleration.y), ForceMode.Acceleration);
+
+
+
     }
     void OnTriggerEnter(Collider other)
     {
