@@ -22,9 +22,14 @@ public class PlayerController : MonoBehaviour {
     //FixedUpdate is called before performing any physics calculations
     void FixedUpdate() {
 
-        /*From keyboard
+
+        //input for keyboard for testing in editor
+    #if UNITY_EDITOR
         movement = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-        */
+        rb.AddForce(movement, ForceMode.Acceleration);
+    #endif
+
+
 
         /*From accelerometer*/
         rb.AddForce(new Vector3(Input.acceleration.x,Input.acceleration.z,Input.acceleration.y), ForceMode.Acceleration);
